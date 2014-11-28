@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vailant Saunier Duval ideiglenes garanciaellenörző</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+<div class="container">
+    <div class="text-center">
+        <th:block th:if="${message != null}">
+            <!-- /* The message code is returned from the @Controller */ -->
+            <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}})">&nbsp;</div>
+        </th:block>
+        <h1>Teszt üzem</h1>
+        <p class="lead">
+            Üdvözöljük a Vailant Saunier Duval ideiglenes garanciaellenörző rendszerében!
+        </p>
+    </div>
+    <form class="form-narrow form-horizontal" method="post" th:action="@{/check}" th:object="${inputParameters}">
+        <!-- /* Show general error message when form contains errors */ -->
+        <th:block th:if="${#fields.hasErrors('${inputParameters.*}')}">
+            <div th:replace="fragments/alert :: alert (type='danger', message='Hibák találhatók, próbálja újra.')">Hiba</div>
+        </th:block>
+        <fieldset>
+            <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error'">
+                <label for="email" class="col-lg-2 control-label">Email</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="email" placeholder="Email cím" th:field="*{email}" />
+                    <span class="help-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Hibás email</span>
+                </div>
+            </div>
+            <div class="form-group" th:classappend="${#fields.hasErrors('serial')}? 'has-error'">
+                <label for="email" class="col-lg-2 control-label">Gyári szám:</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="serial" placeholder="Gyári szám" th:field="*{serial}" />
+                    <span class="help-block" th:if="${#fields.hasErrors('serial')}" th:errors="*{serial}">Hibás gyári szám</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button type="submit" class="btn btn-default">Lekérdezés</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <th:block th:if="${deviceList != null}">
+        <table class="table .table-striped table-condensed">
+            <thead>
+            <tr>
+                <th>Gyári szám</th>
+                <th>Cikkszám</th>
+                <th>Garancia kezdete</th>
+                <th>Utómunka megnevezése</th>
+                <th>Ideje</th>
+                <th>Tulaj azonosító</th>
+            </tr>
+            </thead>
+            <tbody>
+                    <tr th:each="next : ${deviceList}">
+                        <td th:text="${next.SERIAL_NUMBER}">a</td>
+                        <td th:text="${next.CIKKSZAM}"/>
+                        <td th:text="${next.GAR_KEZD}"/>
+                        <td th:text="${next.UT_MUNKA_MEGN}"/>
+                        <td th:text="${next.UT_MUNKA_IDEJE}"/>
+                        <td th:text="${next.TULAJ_AZON}"/>
+                    </tr>
+            </tbody>
+        </table>
+        </th:block>
+    <div th:replace="fragments/footer :: footer">&copy; 2013 The Static Templates</div>
+</div>
+</body>
+</html>
