@@ -4,9 +4,12 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -21,28 +24,19 @@ import com.vialent.warranty.Application;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses = Application.class)
+@PropertySource("file:${checker.config.root}/service.properties")
 class JpaConfig implements TransactionManagementConfigurer {
 
-    @Value("${dataSource.driverClassName}")
-    private String driver;
-    @Value("${dataSource.url}")
-    private String url;
-    @Value("${dataSource.username}")
-    private String username;
-    @Value("${dataSource.password}")
-    private String password;
-    @Value("${hibernate.dialect}")
-    private String dialect;
-    @Value("${hibernate.hbm2ddl.auto}")
-    private String hbm2ddlAuto;
+    @Autowired
+    Environment env;
 
     @Bean
     public DataSource configureDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(driver);
-        dataSource.setUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
+        dataSource.setDriverClassName(env.getProperty("dataSource.driverClassName"));
+        dataSource.setUrl(env.getProperty("dataSource.url"));
+        dataSource.setUsername(env.getProperty("dataSource.username"));
+        dataSource.setPassword(env.getProperty("dataSource.password"));
         return dataSource;
     }
 
@@ -54,8 +48,8 @@ class JpaConfig implements TransactionManagementConfigurer {
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties jpaProperties = new Properties();
-        jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, dialect);
-        jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, hbm2ddlAuto);
+        jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, env.getProperty("hibernate.dialect"));
+        jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, env.getProperty("hibernate.hbm2ddl.auto"));
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
         return entityManagerFactoryBean;

@@ -15,7 +15,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] {ApplicationConfig.class, DataSourceConfig.class, JpaConfig.class};
+        return new Class<?>[] {ApplicationConfig.class, JpaConfig.class};
     }
 
     @Override
@@ -35,6 +35,5 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
         registration.setInitParameter("defaultHtmlEscape", "true");
-        registration.setInitParameter("spring.profiles.active", "default");
     }
 }

@@ -14,12 +14,4 @@ import com.vialent.warranty.Application;
 @Configuration
 @ComponentScan(basePackageClasses = Application.class, excludeFilters = @Filter({Controller.class, Configuration.class}))
 class ApplicationConfig {
-	
-	@Bean
-	public static PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
-		PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-		ppc.setLocation(new ClassPathResource("/persistence.properties"));
-		return ppc;
-	}
-	
 }

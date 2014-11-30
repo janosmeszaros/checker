@@ -249,6 +249,9 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/checker</path>
+                    <systemProperties>
+                        <checker.config.root>${basedir}\src\test\resources</checker.config.root>
+                    </systemProperties>
                 </configuration>
             </plugin>
             <plugin>
