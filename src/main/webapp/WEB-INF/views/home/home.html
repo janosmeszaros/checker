@@ -54,20 +54,26 @@
             <tr>
                 <th>Gyári szám</th>
                 <th>Cikkszám</th>
+                <th>Megnevezés</th>
                 <th>Garancia kezdete</th>
-                <th>Utómunka megnevezése</th>
+                <th>Garancia sorszáma</th>
+                <th>Garancia szövege</th>
+                <th>Utolsó munka megnevezése</th>
                 <th>Ideje</th>
-                <th>Tulaj azonosító</th>
+                <th>Végzője</th>
             </tr>
             </thead>
             <tbody>
                     <tr th:each="next : ${deviceList}">
-                        <td th:text="${next.SERIAL_NUMBER}">a</td>
+                        <td th:text="${next.SERIAL_NUMBER}"/>
                         <td th:text="${next.CIKKSZAM}"/>
+                        <td th:text="${next.MEGNEVEZES}"/>
                         <td th:text="${next.GAR_KEZD}"/>
-                        <td th:text="${next.UT_MUNKA_MEGN}"/>
-                        <td th:text="${next.UT_MUNKA_IDEJE}"/>
-                        <td th:text="${next.TULAJ_AZON}"/>
+                        <td th:text="${next.GAR_SORSZAM}"/>
+                        <td th:text="${next.GAR_SZOVEG}"/>
+                        <td th:text="${next.UTOLSO_MUNKA_MEGNEVEZESE}"/>
+                        <td th:text="${next.UTOLSO_MUNKA_IDEJE}"/>
+                        <td th:text="${next.UTOLSO_MUNKAVEGZO}"/>
                     </tr>
             </tbody>
         </table>

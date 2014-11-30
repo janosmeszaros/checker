@@ -1,5 +1,7 @@
 package com.vialent.warranty.model;
 
+import com.google.common.base.Objects;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -13,32 +15,38 @@ public class Device {
     @Id
     @GeneratedValue
     private Integer TECH_KEY;
-    private Integer TULAJ_AZON;
-    private String UT_MUNKA_MEGN;
-    private String GAR_SORSZAM;
-    private String TELEPITO_KOD;
     private String SERIAL_NUMBER;
-    private String UT_MUNKA_VEGZO;
     private Date GAR_KEZD;
-    private Date UT_MUNKA_IDEJE;
-    private String CEG_KAT;
     private String CIKKSZAM;
+    private String MEGNEVEZES;
+    private String CEG_KAT;
+    private String TELEPITO_KOD;
+    private String TELEPITO;
+    private Date UTOLSO_MUNKA_IDEJE;
+    private String UTOLSO_MUNKA_MEGNEVEZESE;
+    private String UTOLSO_MUNKAVEGZO;
+    private String GAR_SORSZAM;
+    private Integer TULAJ_AZON;
+    private String GAR_SZOVEG;
 
     public Device() {
     }
 
-    public Device(Integer TECH_KEY, Integer TULAJ_AZON, String UT_MUNKA_MEGN, String GAR_SORSZAM, String TELEPITO_KOD, String SERIAL_NUMBER, String UT_MUNKA_VEGZO, Date GAR_KEZD, Date UT_MUNKA_IDEJE, String CEG_KAT, String CIKKSZAM) {
+    public Device(Integer TECH_KEY, String SERIAL_NUMBER, Date GAR_KEZD, String CIKKSZAM, String MEGNEVEZES, String CEG_KAT, String TELEPITO_KOD, String TELEPITO, Date UTOLSO_MUNKA_IDEJE, String UTOLSO_MUNKA_MEGNEVEZESE, String UTOLSO_MUNKAVEGZO, String GAR_SORSZAM, Integer TULAJ_AZON, String GAR_SZOVEG) {
         this.TECH_KEY = TECH_KEY;
-        this.TULAJ_AZON = TULAJ_AZON;
-        this.UT_MUNKA_MEGN = UT_MUNKA_MEGN;
-        this.GAR_SORSZAM = GAR_SORSZAM;
-        this.TELEPITO_KOD = TELEPITO_KOD;
         this.SERIAL_NUMBER = SERIAL_NUMBER;
-        this.UT_MUNKA_VEGZO = UT_MUNKA_VEGZO;
         this.GAR_KEZD = GAR_KEZD;
-        this.UT_MUNKA_IDEJE = UT_MUNKA_IDEJE;
-        this.CEG_KAT = CEG_KAT;
         this.CIKKSZAM = CIKKSZAM;
+        this.MEGNEVEZES = MEGNEVEZES;
+        this.CEG_KAT = CEG_KAT;
+        this.TELEPITO_KOD = TELEPITO_KOD;
+        this.TELEPITO = TELEPITO;
+        this.UTOLSO_MUNKA_IDEJE = UTOLSO_MUNKA_IDEJE;
+        this.UTOLSO_MUNKA_MEGNEVEZESE = UTOLSO_MUNKA_MEGNEVEZESE;
+        this.UTOLSO_MUNKAVEGZO = UTOLSO_MUNKAVEGZO;
+        this.GAR_SORSZAM = GAR_SORSZAM;
+        this.TULAJ_AZON = TULAJ_AZON;
+        this.GAR_SZOVEG = GAR_SZOVEG;
     }
 
     public Integer getTECH_KEY() {
@@ -49,52 +57,12 @@ public class Device {
         this.TECH_KEY = TECH_KEY;
     }
 
-    public Integer getTULAJ_AZON() {
-        return TULAJ_AZON;
-    }
-
-    public void setTULAJ_AZON(Integer TULAJ_AZON) {
-        this.TULAJ_AZON = TULAJ_AZON;
-    }
-
-    public String getUT_MUNKA_MEGN() {
-        return UT_MUNKA_MEGN;
-    }
-
-    public void setUT_MUNKA_MEGN(String UT_MUNKA_MEGN) {
-        this.UT_MUNKA_MEGN = UT_MUNKA_MEGN;
-    }
-
-    public String getGAR_SORSZAM() {
-        return GAR_SORSZAM;
-    }
-
-    public void setGAR_SORSZAM(String GAR_SORSZAM) {
-        this.GAR_SORSZAM = GAR_SORSZAM;
-    }
-
-    public String getTELEPITO_KOD() {
-        return TELEPITO_KOD;
-    }
-
-    public void setTELEPITO_KOD(String TELEPITO_KOD) {
-        this.TELEPITO_KOD = TELEPITO_KOD;
-    }
-
     public String getSERIAL_NUMBER() {
         return SERIAL_NUMBER;
     }
 
     public void setSERIAL_NUMBER(String SERIAL_NUMBER) {
         this.SERIAL_NUMBER = SERIAL_NUMBER;
-    }
-
-    public String getUT_MUNKA_VEGZO() {
-        return UT_MUNKA_VEGZO;
-    }
-
-    public void setUT_MUNKA_VEGZO(String UT_MUNKA_VEGZO) {
-        this.UT_MUNKA_VEGZO = UT_MUNKA_VEGZO;
     }
 
     public Date getGAR_KEZD() {
@@ -105,12 +73,20 @@ public class Device {
         this.GAR_KEZD = GAR_KEZD;
     }
 
-    public Date getUT_MUNKA_IDEJE() {
-        return UT_MUNKA_IDEJE;
+    public String getCIKKSZAM() {
+        return CIKKSZAM;
     }
 
-    public void setUT_MUNKA_IDEJE(Date UT_MUNKA_IDEJE) {
-        this.UT_MUNKA_IDEJE = UT_MUNKA_IDEJE;
+    public void setCIKKSZAM(String CIKKSZAM) {
+        this.CIKKSZAM = CIKKSZAM;
+    }
+
+    public String getMEGNEVEZES() {
+        return MEGNEVEZES;
+    }
+
+    public void setMEGNEVEZES(String MEGNEVEZES) {
+        this.MEGNEVEZES = MEGNEVEZES;
     }
 
     public String getCEG_KAT() {
@@ -121,28 +97,72 @@ public class Device {
         this.CEG_KAT = CEG_KAT;
     }
 
-    public String getCIKKSZAM() {
-        return CIKKSZAM;
+    public String getTELEPITO_KOD() {
+        return TELEPITO_KOD;
     }
 
-    public void setCIKKSZAM(String CIKKSZAM) {
-        this.CIKKSZAM = CIKKSZAM;
+    public void setTELEPITO_KOD(String TELEPITO_KOD) {
+        this.TELEPITO_KOD = TELEPITO_KOD;
+    }
+
+    public String getTELEPITO() {
+        return TELEPITO;
+    }
+
+    public void setTELEPITO(String TELEPITO) {
+        this.TELEPITO = TELEPITO;
+    }
+
+    public Date getUTOLSO_MUNKA_IDEJE() {
+        return UTOLSO_MUNKA_IDEJE;
+    }
+
+    public void setUTOLSO_MUNKA_IDEJE(Date UTOLSO_MUNKA_IDEJE) {
+        this.UTOLSO_MUNKA_IDEJE = UTOLSO_MUNKA_IDEJE;
+    }
+
+    public String getUTOLSO_MUNKA_MEGNEVEZESE() {
+        return UTOLSO_MUNKA_MEGNEVEZESE;
+    }
+
+    public void setUTOLSO_MUNKA_MEGNEVEZESE(String UTOLSO_MUNKA_MEGNEVEZESE) {
+        this.UTOLSO_MUNKA_MEGNEVEZESE = UTOLSO_MUNKA_MEGNEVEZESE;
+    }
+
+    public String getUTOLSO_MUNKAVEGZO() {
+        return UTOLSO_MUNKAVEGZO;
+    }
+
+    public void setUTOLSO_MUNKAVEGZO(String UTOLSO_MUNKAVEGZO) {
+        this.UTOLSO_MUNKAVEGZO = UTOLSO_MUNKAVEGZO;
+    }
+
+    public String getGAR_SORSZAM() {
+        return GAR_SORSZAM;
+    }
+
+    public void setGAR_SORSZAM(String GAR_SORSZAM) {
+        this.GAR_SORSZAM = GAR_SORSZAM;
+    }
+
+    public Integer getTULAJ_AZON() {
+        return TULAJ_AZON;
+    }
+
+    public void setTULAJ_AZON(Integer TULAJ_AZON) {
+        this.TULAJ_AZON = TULAJ_AZON;
+    }
+
+    public String getGAR_SZOVEG() {
+        return GAR_SZOVEG;
+    }
+
+    public void setGAR_SZOVEG(String GAR_SZOVEG) {
+        this.GAR_SZOVEG = GAR_SZOVEG;
     }
 
     @Override
     public String toString() {
-        return "Device{" +
-                "TECH_KEY=" + TECH_KEY +
-                ", TULAJ_AZON=" + TULAJ_AZON +
-                ", UT_MUNKA_MEGN='" + UT_MUNKA_MEGN + '\'' +
-                ", GAR_SORSZAM='" + GAR_SORSZAM + '\'' +
-                ", TELEPITO_KOD='" + TELEPITO_KOD + '\'' +
-                ", SERIAL_NUMBER='" + SERIAL_NUMBER + '\'' +
-                ", UT_MUNKA_VEGZO='" + UT_MUNKA_VEGZO + '\'' +
-                ", GAR_KEZD=" + GAR_KEZD +
-                ", UT_MUNKA_IDEJE=" + UT_MUNKA_IDEJE +
-                ", CEG_KAT='" + CEG_KAT + '\'' +
-                ", CIKKSZAM='" + CIKKSZAM + '\'' +
-                '}';
+        return Objects.toStringHelper(this).toString();
     }
 }
