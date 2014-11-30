@@ -1,6 +1,6 @@
 checker
 =======
-This is a webproject which uses Spring MVC + Hibernate.
+This webproject uses Spring MVC + Hibernate.
 To set up your database connection for hibernate you need to create a file with name 'service.properties' and 
 set enviroment variable 'checker.config.root' in your application server to point to the file's directory.
 
@@ -14,3 +14,5 @@ dataSource.password
 hibernate.dialect=e.g.: org.hibernate.dialect.MySQLDialect
 hibernate.hbm2ddl.auto=e.g.: validate
 ```
+
+You can find the binaries for the project [here](https://github.com/janosmeszaros/checker/tree/master/binary).
