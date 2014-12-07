@@ -12,6 +12,7 @@
 <div th:replace="fragments/header :: header">Header</div>
 <div class="container">
     <div class="text-center">
+<!--        <img th:src="@{resources/images/vsd.png}" class="img-responsive" alt="Responsive image"/> -->
         <th:block th:if="${message != null}">
             <!-- /* The message code is returned from the @Controller */ -->
             <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}})">&nbsp;</div>

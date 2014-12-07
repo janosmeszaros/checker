@@ -16,13 +16,13 @@ public class Device {
     @GeneratedValue
     private Integer TECH_KEY;
     private String SERIAL_NUMBER;
-    private Date GAR_KEZD;
+    private String GAR_KEZD;
     private String CIKKSZAM;
     private String MEGNEVEZES;
     private String CEG_KAT;
     private String TELEPITO_KOD;
     private String TELEPITO;
-    private Date UTOLSO_MUNKA_IDEJE;
+    private String UTOLSO_MUNKA_IDEJE;
     private String UTOLSO_MUNKA_MEGNEVEZESE;
     private String UTOLSO_MUNKAVEGZO;
     private String GAR_SORSZAM;
@@ -32,7 +32,7 @@ public class Device {
     public Device() {
     }
 
-    public Device(Integer TECH_KEY, String SERIAL_NUMBER, Date GAR_KEZD, String CIKKSZAM, String MEGNEVEZES, String CEG_KAT, String TELEPITO_KOD, String TELEPITO, Date UTOLSO_MUNKA_IDEJE, String UTOLSO_MUNKA_MEGNEVEZESE, String UTOLSO_MUNKAVEGZO, String GAR_SORSZAM, Integer TULAJ_AZON, String GAR_SZOVEG) {
+    public Device(Integer TECH_KEY, String SERIAL_NUMBER, String GAR_KEZD, String CIKKSZAM, String MEGNEVEZES, String CEG_KAT, String TELEPITO_KOD, String TELEPITO, String UTOLSO_MUNKA_IDEJE, String UTOLSO_MUNKA_MEGNEVEZESE, String UTOLSO_MUNKAVEGZO, String GAR_SORSZAM, Integer TULAJ_AZON, String GAR_SZOVEG) {
         this.TECH_KEY = TECH_KEY;
         this.SERIAL_NUMBER = SERIAL_NUMBER;
         this.GAR_KEZD = GAR_KEZD;
@@ -65,11 +65,11 @@ public class Device {
         this.SERIAL_NUMBER = SERIAL_NUMBER;
     }
 
-    public Date getGAR_KEZD() {
+    public String getGAR_KEZD() {
         return GAR_KEZD;
     }
 
-    public void setGAR_KEZD(Date GAR_KEZD) {
+    public void setGAR_KEZD(String GAR_KEZD) {
         this.GAR_KEZD = GAR_KEZD;
     }
 
@@ -113,11 +113,11 @@ public class Device {
         this.TELEPITO = TELEPITO;
     }
 
-    public Date getUTOLSO_MUNKA_IDEJE() {
+    public String getUTOLSO_MUNKA_IDEJE() {
         return UTOLSO_MUNKA_IDEJE;
     }
 
-    public void setUTOLSO_MUNKA_IDEJE(Date UTOLSO_MUNKA_IDEJE) {
+    public void setUTOLSO_MUNKA_IDEJE(String UTOLSO_MUNKA_IDEJE) {
         this.UTOLSO_MUNKA_IDEJE = UTOLSO_MUNKA_IDEJE;
     }
 

@@ -2,6 +2,7 @@ package com.vialent.warranty.repos;
 
 import com.vialent.warranty.model.Account;
 import com.vialent.warranty.model.Device;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.NestedExceptionUtils;
@@ -25,7 +26,7 @@ public class Repository {
                     .setParameter("email", email)
                     .getSingleResult();
         } catch (PersistenceException e) {
-            LOGGER.error("Exception occurred while account query: {} ", e);
+            LOGGER.error("Exception occurred while account query: {}", ExceptionUtils.getMessage(e));
             return null;
         }
     }
@@ -37,7 +38,7 @@ public class Repository {
                     .getResultList();
             return result;
         } catch (PersistenceException e) {
-            LOGGER.error("Exception occurred while device query: {} ", e);
+            LOGGER.error("Exception occurred while device query: {} ", ExceptionUtils.getMessage(e));
             return null;
         }
     }

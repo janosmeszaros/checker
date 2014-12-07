@@ -40,10 +40,10 @@ public class HomeController {
             if (devices != null && !devices.isEmpty()){
                 model.addAttribute(devices);
             } else {
-                MessageHelper.addErrorAttribute(ra, "serial.notfound");
+                MessageHelper.addErrorAttribute(model, "serial.notfound");
             }
         } else {
-           MessageHelper.addErrorAttribute(ra, "email.notfound");
+           MessageHelper.addErrorAttribute(model, "email.notfound");
         }
         return "home/home";
     }
